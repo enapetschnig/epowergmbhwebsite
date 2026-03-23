@@ -1,4 +1,7 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null,
   "rewrites": [
     { "source": "/youtube", "destination": "/youtube.html" },
     { "source": "/quiz", "destination": "/quiz.html" },
