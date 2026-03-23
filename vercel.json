@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/youtube", "destination": "/youtube.html" },
+    { "source": "/quiz", "destination": "/quiz.html" },
+    { "source": "/api/lead", "destination": "/api/lead" }
+  ]
+}
