@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAPETSCHNIG. | Kontakt über YouTube</title>
+  <meta name="description" content="Du hast uns auf YouTube gesehen? Lass uns reden. Wir bauen individuelle Software für Handwerksbetriebe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #1c1c1c;
+      --text-2: #4a4a4a;
+      --text-3: #7a7a7a;
+      --accent: #0d6b3d;
+      --accent-soft: #e6f4ec;
+      --accent-dark: #094d2b;
+      --border: #e8e8e6;
+      --border-light: #f0f0ee;
+      --font: 'Outfit', sans-serif;
+      --r: 12px;
+      --r-lg: 18px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100dvh; }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247,247,245,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    @media (min-width: 768px) { .nav-inner { padding: 0 40px; } }
+    .nav-logo { height: 20px; }
+    @media (min-width: 768px) { .nav-logo { height: 22px; } }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back i { font-size: 18px; }
+
+    .page {
+      max-width: 1100px; margin: 0 auto; padding: 100px 20px 60px;
+    }
+    @media (min-width: 768px) { .page { padding: 120px 40px 80px; } }
+
+    .page-grid {
+      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: flex-start;
+    }
+    @media (min-width: 768px) { .page-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
+
+    /* Left column */
+    .yt-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; background: #fee2e2; border-radius: 100px;
+      font-size: 12px; font-weight: 700; color: #dc2626; margin-bottom: 18px;
+    }
+    .yt-badge i { font-size: 16px; }
+
+    .page h1 {
+      font-size: clamp(28px, 4.5vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.12;
+    }
+
+    .page-sub {
+      margin-top: 16px; font-size: 16px; color: var(--text-2); line-height: 1.75; max-width: 480px;
+    }
+
+    .yt-topics {
+      margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .yt-topic {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--text);
+    }
+    .yt-topic i { font-size: 14px; color: var(--accent); }
+
+    .yt-trust {
+      margin-top: 32px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .yt-trust-i {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 500; color: var(--text-2);
+    }
+    .yt-trust-i i { font-size: 20px; color: var(--accent); flex-shrink: 0; }
+
+    /* Right column - Form */
+    .form-card {
+      background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: var(--r-lg); padding: 32px; box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+    .form-card h2 {
+      font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px;
+    }
+    .form-card-sub { font-size: 14px; color: var(--text-3); margin-bottom: 24px; }
+
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .field input {
+      padding: 13px 16px; background: var(--bg); border: 2px solid var(--border-light);
+      border-radius: var(--r); font-family: var(--font); font-size: 15px; color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .field input::placeholder { color: #b5b5b0; }
+    .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(13,107,61,0.08); }
+    .field input.error { border-color: #dc2626; }
+    .field .error-msg { font-size: 12px; color: #dc2626; display: none; }
+    .field input.error + .error-msg { display: block; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; background: var(--accent); color: #fff;
+      font-size: 15px; font-weight: 700; font-family: var(--font);
+      border: none; border-radius: 100px; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.12s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(13,107,61,0.18); width: 100%;
+    }
+    .btn:hover { background: var(--accent-dark); box-shadow: 0 4px 16px rgba(13,107,61,0.25); }
+    .btn:active { transform: scale(0.97) translateY(1px); }
+    .btn i { font-size: 18px; }
+
+    .form-micro { font-size: 12px; color: var(--text-3); text-align: center; margin-top: 6px; }
+
+    .form-trust-row {
+      display: flex; justify-content: center; gap: 16px; margin-top: 16px;
+      padding-top: 16px; border-top: 1px solid var(--border-light);
+    }
+    .form-trust-row span {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: var(--text-3);
+    }
+    .form-trust-row i { font-size: 14px; color: var(--accent); }
+
+    /* Success state */
+    .form-success {
+      display: none; text-align: center; padding: 32px 16px;
+    }
+    .form-success.active { display: block; }
+    .form-success-icon {
+      width: 56px; height: 56px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;
+    }
+    .form-success h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .form-success p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+
+    /* Fade in */
+    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s var(--ease) forwards; }
+    .fade-in-d1 { animation-delay: 0.1s; }
+    .fade-in-d2 { animation-delay: 0.2s; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html"><img src="logo.png" alt="NAPETSCHNIG." class="nav-logo"></a>
+      <a href="index.html" class="nav-back"><i class="ph ph-arrow-left"></i> Zur Startseite</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="page-grid">
+      <!-- Left -->
+      <div class="fade-in">
+        <div class="yt-badge"><i class="ph-fill ph-youtube-logo"></i> Du kennst uns von YouTube</div>
+        <h1>Schön, dass du hier bist.</h1>
+        <p class="page-sub">Du hast eines unserer Videos zu KI, Automatisierung oder Digitalisierung gesehen — und willst wissen, wie das konkret für deinen Betrieb aussehen kann?<br><br>Dann lass uns kurz reden. Wir zeigen dir, was für dich möglich ist.</p>
+
+        <div class="yt-topics">
+          <div class="yt-topic"><i class="ph ph-robot"></i> KI im Handwerk</div>
+          <div class="yt-topic"><i class="ph ph-gear"></i> Automatisierung</div>
+          <div class="yt-topic"><i class="ph ph-device-mobile"></i> Digitalisierung</div>
+          <div class="yt-topic"><i class="ph ph-code"></i> Individuelle Software</div>
+        </div>
+
+        <div class="yt-trust">
+          <div class="yt-trust-i"><i class="ph ph-check-circle"></i><span>Mehr als 40 individuelle Software-Projekte umgesetzt</span></div>
+          <div class="yt-trust-i"><i class="ph ph-check-circle"></i><span>Spezialisiert auf Handwerksbetriebe in Österreich</span></div>
+          <div class="yt-trust-i"><i class="ph ph-check-circle"></i><span>In 1-2 Wochen fertig, keine monatlichen Kosten</span></div>
+          <div class="yt-trust-i"><i class="ph ph-check-circle"></i><span>Die Software gehört dir zu 100 %</span></div>
+        </div>
+      </div>
+
+      <!-- Right - Form -->
+      <div class="fade-in fade-in-d1">
+        <div class="form-card">
+          <div id="formContent">
+            <h2>Lass uns kurz reden</h2>
+            <p class="form-card-sub">Wir melden uns innerhalb von 24 Stunden bei dir.</p>
+            <form class="form" id="ytForm" onsubmit="submitYTForm(event)">
+              <div class="form-row">
+                <div class="field">
+                  <label for="firstName">Vorname</label>
+                  <input type="text" id="firstName" placeholder="z.B. Thomas" required>
+                  <span class="error-msg">Bitte Vorname eingeben</span>
+                </div>
+                <div class="field">
+                  <label for="lastName">Nachname</label>
+                  <input type="text" id="lastName" placeholder="z.B. Hofer" required>
+                  <span class="error-msg">Bitte Nachname eingeben</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="company">Name des Unternehmens</label>
+                <input type="text" id="company" placeholder="z.B. Hofer Elektrotechnik GmbH" required>
+                <span class="error-msg">Bitte Unternehmen eingeben</span>
+              </div>
+              <div class="field">
+                <label for="phone">Telefonnummer</label>
+                <input type="tel" id="phone" placeholder="z.B. +43 660 1234567" required>
+                <span class="error-msg">Bitte Telefonnummer eingeben</span>
+              </div>
+              <button type="submit" class="btn">Gespräch vereinbaren <i class="ph ph-arrow-right"></i></button>
+              <p class="form-micro">Unverbindlich. Kein Verkaufsgespräch. Wir schauen einfach, ob es passt.</p>
+              <div class="form-trust-row">
+                <span><i class="ph ph-shield-check"></i> Keine Kosten</span>
+                <span><i class="ph ph-clock"></i> Antwort in 24h</span>
+                <span><i class="ph ph-lock-simple"></i> Daten sicher</span>
+              </div>
+            </form>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon"><i class="ph ph-check-fat"></i></div>
+            <h3>Perfekt, wir melden uns!</h3>
+            <p>Vielen Dank. Wir rufen dich innerhalb von 24 Stunden an, um einen Termin zu finden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitYTForm(e) {
+      e.preventDefault();
+      const fields = ['firstName', 'lastName', 'company', 'phone'];
+      let valid = true;
+
+      fields.forEach(id => {
+        const input = document.getElementById(id);
+        if (!input.value.trim()) { input.classList.add('error'); valid = false; }
+        else { input.classList.remove('error'); }
+      });
+
+      if (!valid) return;
+
+      const data = {
+        vorname: document.getElementById('firstName').value.trim(),
+        nachname: document.getElementById('lastName').value.trim(),
+        unternehmen: document.getElementById('company').value.trim(),
+        telefon: document.getElementById('phone').value.trim(),
+        quelle: 'youtube'
+      };
+
+      // Send to backend
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(() => {});
+
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('active');
+    }
+
+    document.querySelectorAll('.field input').forEach(input => {
+      input.addEventListener('input', () => input.classList.remove('error'));
+    });
+  </script>
+
+</body>
+</html>

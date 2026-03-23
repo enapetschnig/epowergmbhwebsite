@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erstgespräch sichern | NAPETSCHNIG.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #1c1c1c;
+      --text-2: #4a4a4a;
+      --text-3: #7a7a7a;
+      --accent: #0d6b3d;
+      --accent-soft: #e6f4ec;
+      --accent-dark: #094d2b;
+      --border: #e8e8e6;
+      --border-light: #f0f0ee;
+      --font: 'Outfit', sans-serif;
+      --r: 12px;
+      --r-lg: 18px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100dvh; }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247,247,245,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    @media (min-width: 768px) { .nav-inner { padding: 0 40px; } }
+    .nav-logo { height: 20px; }
+    @media (min-width: 768px) { .nav-logo { height: 22px; } }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back i { font-size: 18px; }
+
+    /* Layout */
+    .quiz-wrapper {
+      max-width: 640px; margin: 0 auto; padding: 100px 20px 60px;
+    }
+    @media (min-width: 768px) { .quiz-wrapper { padding: 120px 40px 80px; } }
+
+    /* Progress */
+    .progress-bar {
+      width: 100%; height: 4px; background: var(--border-light); border-radius: 100px;
+      margin-bottom: 40px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--accent); border-radius: 100px;
+      transition: width 0.5s var(--ease);
+    }
+
+    /* Steps */
+    .step {
+      display: none; opacity: 0; transform: translateY(16px);
+      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .step.active { display: block; }
+    .step.visible { opacity: 1; transform: translateY(0); }
+
+    /* Step header */
+    .step-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .step-tag i { font-size: 14px; }
+
+    .step h2 {
+      font-size: clamp(24px, 4vw, 34px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15; color: var(--text);
+    }
+
+    .step-sub {
+      font-size: 15px; color: var(--text-2); line-height: 1.7; margin-top: 10px; max-width: 480px;
+    }
+
+    /* Intro examples */
+    .examples {
+      display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px;
+    }
+    .example-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 20px; background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: var(--r-lg); transition: box-shadow 0.3s;
+    }
+    .example-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.04); }
+    .example-ic {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+    .example-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .example-card p { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+
+    .intro-start {
+      margin-top: 32px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--accent); color: #fff;
+      font-size: 15px; font-weight: 700; font-family: var(--font);
+      border: none; border-radius: 100px; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.12s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(13,107,61,0.18);
+    }
+    .btn:hover { background: var(--accent-dark); box-shadow: 0 4px 16px rgba(13,107,61,0.25); }
+    .btn:active { transform: scale(0.97) translateY(1px); }
+    .btn i { font-size: 18px; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+    .micro { font-size: 12px; color: var(--text-3); }
+
+    /* Choice buttons (Yes/No, Mitarbeiter) */
+    .choices {
+      display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 28px;
+    }
+    @media (min-width: 480px) { .choices.two-col { grid-template-columns: 1fr 1fr; } }
+
+    .choice {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px; background: var(--surface); border: 2px solid var(--border-light);
+      border-radius: var(--r-lg); cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.12s;
+      font-family: var(--font);
+    }
+    .choice:hover { border-color: var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .choice:active { transform: scale(0.98); }
+    .choice.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 2px 12px rgba(13,107,61,0.1); }
+
+    .choice-radio {
+      width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .choice.selected .choice-radio {
+      border-color: var(--accent); background: var(--accent);
+    }
+    .choice-radio::after {
+      content: ''; width: 8px; height: 8px; border-radius: 50%; background: #fff;
+      opacity: 0; transform: scale(0); transition: opacity 0.2s, transform 0.2s var(--ease);
+    }
+    .choice.selected .choice-radio::after { opacity: 1; transform: scale(1); }
+
+    .choice-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+    }
+
+    .choice-text { font-size: 15px; font-weight: 600; color: var(--text); }
+    .choice-desc { font-size: 12px; color: var(--text-3); margin-top: 1px; }
+
+    .choice-next { margin-top: 24px; }
+
+    /* Not-GF message */
+    .not-gf {
+      margin-top: 24px; padding: 20px; background: #fef9ee; border: 1px solid #fde68a;
+      border-radius: var(--r); display: none;
+    }
+    .not-gf p { font-size: 14px; color: #92400e; line-height: 1.6; }
+    .not-gf a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .field input {
+      padding: 14px 16px; background: var(--surface); border: 2px solid var(--border-light);
+      border-radius: var(--r); font-family: var(--font); font-size: 15px; color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .field input::placeholder { color: #b5b5b0; }
+    .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(13,107,61,0.08); }
+    .field input.error { border-color: #dc2626; }
+    .field .error-msg { font-size: 12px; color: #dc2626; display: none; }
+    .field input.error + .error-msg { display: block; }
+
+    .form-submit { margin-top: 8px; }
+
+    /* Thank you */
+    .thankyou { text-align: center; padding-top: 80px; }
+    .thankyou-icon {
+      width: 72px; height: 72px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 24px;
+    }
+    .thankyou h2 {
+      font-size: clamp(26px, 4vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15;
+    }
+    .thankyou p { font-size: 16px; color: var(--text-2); margin-top: 12px; max-width: 420px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .thankyou .btn { margin-top: 28px; }
+
+    .thankyou-trust {
+      margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border-light);
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+    }
+    .thankyou-trust-i {
+      display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-2);
+    }
+    .thankyou-trust-i i { font-size: 18px; color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html"><img src="logo.png" alt="NAPETSCHNIG." class="nav-logo"></a>
+      <a href="index.html" class="nav-back"><i class="ph ph-arrow-left"></i> Zurück</a>
+    </div>
+  </nav>
+
+  <div class="quiz-wrapper">
+    <!-- PROGRESS -->
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
+
+    <!-- STEP 0: INTRO -->
+    <div class="step active" id="step0">
+      <div class="step-tag"><i class="ph ph-sparkle"></i> Erstgespräch</div>
+      <h2>Damit du dir vorstellen kannst, was möglich ist</h2>
+      <p class="step-sub">Bevor wir sprechen, zeigen wir dir kurz, was wir für andere Handwerksbetriebe gebaut haben. Danach stellen wir dir ein paar kurze Fragen.</p>
+
+      <div class="examples">
+        <div class="example-card">
+          <div class="example-ic"><i class="ph ph-tree"></i></div>
+          <div>
+            <h4>Zimmerei-Betrieb</h4>
+            <p>Digitale Stundenzettel, automatische Regieberichte und eine Mitarbeiter-App für die Baustelle. In 12 Tagen fertig.</p>
+          </div>
+        </div>
+        <div class="example-card">
+          <div class="example-ic"><i class="ph ph-drop"></i></div>
+          <div>
+            <h4>Installateur-Meisterbetrieb</h4>
+            <p>Komplette Projektübersicht, Foto-Dokumentation und Angebotsautomatisierung per Spracheingabe. Ergebnis: 3 Stunden weniger Büroarbeit pro Tag.</p>
+          </div>
+        </div>
+        <div class="example-card">
+          <div class="example-ic"><i class="ph ph-paint-roller"></i></div>
+          <div>
+            <h4>Malerbetrieb</h4>
+            <p>Drei verschiedene Programme durch eine einzige App ersetzt. Ohne Schulung, ohne Chaos — alle Mitarbeiter nutzen sie vom ersten Tag an.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-start">
+        <button class="btn" onclick="goTo(1)">Weiter zu den Fragen <i class="ph ph-arrow-right"></i></button>
+        <span class="micro">Dauert nur 30 Sekunden</span>
+      </div>
+    </div>
+
+    <!-- STEP 1: Geschäftsführer? -->
+    <div class="step" id="step1">
+      <div class="step-tag"><i class="ph ph-user-circle"></i> Frage 1 von 3</div>
+      <h2>Sind Sie Geschäftsführer eines Handwerksbetriebs?</h2>
+      <p class="step-sub">Unsere Lösung ist speziell für Inhaber und Geschäftsführer konzipiert, die Abläufe in ihrem Betrieb verbessern wollen.</p>
+
+      <div class="choices two-col">
+        <button class="choice" data-value="ja" onclick="selectGF(this, 'ja')">
+          <div class="choice-radio"></div>
+          <div>
+            <div class="choice-text">Ja</div>
+            <div class="choice-desc">Ich bin Geschäftsführer / Inhaber</div>
+          </div>
+        </button>
+        <button class="choice" data-value="nein" onclick="selectGF(this, 'nein')">
+          <div class="choice-radio"></div>
+          <div>
+            <div class="choice-text">Nein</div>
+            <div class="choice-desc">Ich habe eine andere Rolle</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="not-gf" id="notGF">
+        <p>Kein Problem — leite diese Seite gerne an den Geschäftsführer weiter. Oder <a href="index.html">schau dir unsere Lösung nochmal an</a>.</p>
+      </div>
+    </div>
+
+    <!-- STEP 2: Mitarbeiter -->
+    <div class="step" id="step2">
+      <div class="step-tag"><i class="ph ph-users-three"></i> Frage 2 von 3</div>
+      <h2>Wie viele Mitarbeiter hat Ihr Betrieb?</h2>
+      <p class="step-sub">Damit wir einschätzen können, welcher Umfang für Sie passt.</p>
+
+      <div class="choices">
+        <button class="choice" onclick="selectMA(this, '1-5')">
+          <div class="choice-icon"><i class="ph ph-user"></i></div>
+          <div>
+            <div class="choice-text">1 - 5 Mitarbeiter</div>
+            <div class="choice-desc">Kleiner Betrieb</div>
+          </div>
+        </button>
+        <button class="choice" onclick="selectMA(this, '5-10')">
+          <div class="choice-icon"><i class="ph ph-users"></i></div>
+          <div>
+            <div class="choice-text">5 - 10 Mitarbeiter</div>
+            <div class="choice-desc">Wachsender Betrieb</div>
+          </div>
+        </button>
+        <button class="choice" onclick="selectMA(this, '10-20')">
+          <div class="choice-icon"><i class="ph ph-users-three"></i></div>
+          <div>
+            <div class="choice-text">10 - 20 Mitarbeiter</div>
+            <div class="choice-desc">Mittelgroßer Betrieb</div>
+          </div>
+        </button>
+        <button class="choice" onclick="selectMA(this, '20+')">
+          <div class="choice-icon"><i class="ph ph-buildings"></i></div>
+          <div>
+            <div class="choice-text">20+ Mitarbeiter</div>
+            <div class="choice-desc">Großer Betrieb</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Kontaktdaten -->
+    <div class="step" id="step3">
+      <div class="step-tag"><i class="ph ph-identification-card"></i> Frage 3 von 3</div>
+      <h2>Wie können wir Sie erreichen?</h2>
+      <p class="step-sub">Tragen Sie Ihre Daten ein und wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+
+      <form class="form" id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="field">
+            <label for="firstName">Vorname</label>
+            <input type="text" id="firstName" placeholder="z.B. Thomas" required>
+            <span class="error-msg">Bitte Vorname eingeben</span>
+          </div>
+          <div class="field">
+            <label for="lastName">Nachname</label>
+            <input type="text" id="lastName" placeholder="z.B. Hofer" required>
+            <span class="error-msg">Bitte Nachname eingeben</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="company">Name des Unternehmens</label>
+          <input type="text" id="company" placeholder="z.B. Hofer Elektrotechnik GmbH" required>
+          <span class="error-msg">Bitte Unternehmen eingeben</span>
+        </div>
+        <div class="field">
+          <label for="phone">Telefonnummer</label>
+          <input type="tel" id="phone" placeholder="z.B. +43 660 1234567" required>
+          <span class="error-msg">Bitte Telefonnummer eingeben</span>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+            Erstgespräch sichern <i class="ph ph-arrow-right"></i>
+          </button>
+          <p class="micro" style="margin-top: 8px; text-align: center;">Unverbindlich. Keine Verpflichtung. Wir rufen Sie an.</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- STEP 4: DANKE -->
+    <div class="step" id="step4">
+      <div class="thankyou">
+        <div class="thankyou-icon"><i class="ph ph-check-fat"></i></div>
+        <h2>Perfekt, wir melden uns!</h2>
+        <p>Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen, um einen Termin für Ihr kostenloses Erstgespräch zu vereinbaren.</p>
+        <a href="index.html" class="btn">Zurück zur Startseite <i class="ph ph-arrow-left"></i></a>
+
+        <div class="thankyou-trust">
+          <div class="thankyou-trust-i"><i class="ph ph-clock"></i> In 1-2 Wochen fertig</div>
+          <div class="thankyou-trust-i"><i class="ph ph-currency-eur"></i> Keine monatl. Kosten</div>
+          <div class="thankyou-trust-i"><i class="ph ph-shield-check"></i> 100 % dein Eigentum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const data = { gf: '', mitarbeiter: '', vorname: '', nachname: '', unternehmen: '', telefon: '' };
+    const steps = [0, 1, 2, 3, 4];
+    let current = 0;
+
+    function setProgress(step) {
+      const pct = [0, 25, 50, 75, 100];
+      document.getElementById('progressFill').style.width = pct[step] + '%';
+    }
+
+    function goTo(n) {
+      const prev = document.getElementById('step' + current);
+      prev.style.opacity = '0';
+      prev.style.transform = 'translateY(-12px)';
+
+      setTimeout(() => {
+        prev.classList.remove('active', 'visible');
+        prev.style.transform = '';
+        current = n;
+        const next = document.getElementById('step' + n);
+        next.classList.add('active');
+        setProgress(n);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { next.classList.add('visible'); });
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 250);
+    }
+
+    function selectGF(el, val) {
+      data.gf = val;
+      el.closest('.choices').querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+
+      if (val === 'nein') {
+        document.getElementById('notGF').style.display = 'block';
+      } else {
+        document.getElementById('notGF').style.display = 'none';
+        setTimeout(() => goTo(2), 400);
+      }
+    }
+
+    function selectMA(el, val) {
+      data.mitarbeiter = val;
+      el.closest('.choices').querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      setTimeout(() => goTo(3), 400);
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const fields = ['firstName', 'lastName', 'company', 'phone'];
+      let valid = true;
+
+      fields.forEach(id => {
+        const input = document.getElementById(id);
+        if (!input.value.trim()) {
+          input.classList.add('error');
+          valid = false;
+        } else {
+          input.classList.remove('error');
+        }
+      });
+
+      if (!valid) return;
+
+      data.vorname = document.getElementById('firstName').value.trim();
+      data.nachname = document.getElementById('lastName').value.trim();
+      data.unternehmen = document.getElementById('company').value.trim();
+      data.telefon = document.getElementById('phone').value.trim();
+
+      // Send to backend
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, quelle: 'quiz' })
+      }).catch(() => {});
+
+      goTo(4);
+    }
+
+    // Remove error on input
+    document.querySelectorAll('.field input').forEach(input => {
+      input.addEventListener('input', () => input.classList.remove('error'));
+    });
+
+    // Init first step
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => { document.getElementById('step0').classList.add('visible'); });
+    });
+  </script>
+
+</body>
+</html>

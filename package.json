@@ -1,0 +1,13 @@
+{
+  "name": "epowergmbh-website",
+  "version": "1.0.0",
+  "description": "Landingpage für ePower GmbH - Individuelle Software für Handwerksbetriebe",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "twilio": "^5.4.0"
+  }
+}
