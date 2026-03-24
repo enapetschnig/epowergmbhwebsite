@@ -5,6 +5,8 @@
   "rewrites": [
     { "source": "/youtube", "destination": "/youtube.html" },
     { "source": "/quiz", "destination": "/quiz.html" },
+    { "source": "/impressum", "destination": "/impressum.html" },
+    { "source": "/datenschutz", "destination": "/datenschutz.html" },
     { "source": "/api/lead", "destination": "/api/lead" }
   ]
 }
