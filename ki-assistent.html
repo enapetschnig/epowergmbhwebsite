@@ -459,6 +459,55 @@
       font-size: 13px; font-weight: 500; color: #e4e4e7;
     }
 
+    /* ===== SAISON ===== */
+    .saison { background: linear-gradient(180deg, #fff8eb 0%, #fdf6e7 100%); border-top: 1px solid #fde68a; border-bottom: 1px solid #fde68a; }
+    .saison-tag { color: #b45309 !important; background: #fef3c7; padding: 4px 10px; border-radius: 100px; }
+    .saison-tag i { font-size: 14px; color: #d97706; }
+    .saison-intro { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: end; }
+    @media (min-width: 768px) { .saison-intro { grid-template-columns: 1.4fr auto; gap: 36px; } }
+    .saison-side {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px;
+      background: #fff;
+      border: 1px solid #fde68a;
+      border-radius: 100px;
+      font-size: 13px; font-weight: 600; color: #78350f;
+      box-shadow: 0 4px 12px rgba(245,158,11,0.08);
+    }
+    .saison-side i { font-size: 18px; color: #d97706; }
+    .saison-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
+    @media (min-width: 640px) { .saison-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .saison-grid { grid-template-columns: repeat(4, 1fr); } }
+    .saison-card {
+      padding: 22px;
+      background: #fff;
+      border: 1px solid #fde68a;
+      border-radius: var(--r-lg);
+      transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .saison-card:hover { box-shadow: 0 6px 20px rgba(245,158,11,0.14); border-color: #fbbf24; transform: translateY(-2px); }
+    .saison-ic {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: #fef3c7; color: #b45309;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .saison-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; color: #18181b; }
+    .saison-card p { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    .saison-card em { color: var(--accent); font-style: normal; font-weight: 700; }
+    .saison-quote {
+      margin-top: 24px;
+      padding: 18px 22px;
+      background: #fff;
+      border-left: 3px solid #d97706;
+      border-radius: 4px;
+      font-size: 14px; color: #78350f; line-height: 1.6;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .saison-quote i { font-size: 22px; color: #d97706; flex-shrink: 0; margin-top: 1px; }
+    .saison-quote strong { color: #451a03; font-weight: 700; }
+
     /* ===== TRADES ===== */
     .trades-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
     @media (min-width: 640px) { .trades-grid { grid-template-columns: 1fr 1fr; } }
@@ -803,7 +852,7 @@
         <p class="demo-context">Lisa ist die KI-Assistentin einer österreichischen <strong>Zimmerei (Demo-Betrieb)</strong> und funktioniert genauso für Elektriker, Installateure, Dachdecker, Tischler, Maler &amp; alle anderen Gewerke.</p>
 
         <div class="call-wrap">
-          <a href="tel:+43" class="call-btn" aria-label="Demo-Nummer anrufen">
+          <a href="tel:+43720080748" class="call-btn" aria-label="Demo-Nummer anrufen">
             <i class="ph-fill ph-phone"></i>
           </a>
           <span class="call-ring"></span>
@@ -811,7 +860,7 @@
           <span class="call-ring r3"></span>
         </div>
 
-        <a href="tel:+43" class="call-number">+43 XXX XXX XXX</a>
+        <a href="tel:+43720080748" class="call-number">+43 720 080 748</a>
         <div class="call-meta">
           <span>Echte KI</span><span class="dot"></span>
           <span>Kostenlos</span><span class="dot"></span>
@@ -988,6 +1037,46 @@
     </div>
   </section>
 
+  <!-- SAISON -->
+  <section class="sec saison">
+    <div class="container">
+      <div class="saison-intro fade">
+        <div>
+          <div class="tag saison-tag"><i class="ph-fill ph-sun"></i> Gerade jetzt besonders relevant</div>
+          <h2 class="h2">Im Sommer macht Lisa den größten Unterschied.</h2>
+          <p class="sub">Hauptsaison im Handwerk heißt: volle Auftragsbücher, lange Tage, viele Außeneinsätze — und genau dann landen die meisten Anrufe in der Voicemail.</p>
+        </div>
+        <div class="saison-side"><i class="ph-fill ph-calendar-check"></i> Mai bis September: peak season</div>
+      </div>
+      <div class="saison-grid">
+        <div class="saison-card fade d1">
+          <div class="saison-ic"><i class="ph-fill ph-sun-horizon"></i></div>
+          <h3>Bausaison-Hochbetrieb</h3>
+          <p>Volle Auftragsbücher, Außenarbeiten von früh bis spät — am Handy bleibt keine Sekunde.</p>
+        </div>
+        <div class="saison-card fade d2">
+          <div class="saison-ic"><i class="ph-fill ph-airplane-takeoff"></i></div>
+          <h3>Urlaubszeit im Team</h3>
+          <p>Mitarbeiter im Urlaub, Büro schlanker besetzt — Lisa hebt trotzdem für alle ab.</p>
+        </div>
+        <div class="saison-card fade d3">
+          <div class="saison-ic"><i class="ph-fill ph-cloud-lightning"></i></div>
+          <h3>Nach Gewittern</h3>
+          <p>Sturmschaden, Wassereinbruch, undichtes Dach — alle wollen <em>jetzt sofort</em> jemanden.</p>
+        </div>
+        <div class="saison-card fade d4">
+          <div class="saison-ic"><i class="ph-fill ph-thermometer-hot"></i></div>
+          <h3>Hauptsaison-Gewerke</h3>
+          <p>PV-Anlage, Klima, Pool, Markise, Dachsanierung — alle wollen den Termin diesen Sommer.</p>
+        </div>
+      </div>
+      <div class="saison-quote fade d5">
+        <i class="ph-fill ph-lightbulb"></i>
+        <span><strong>Auch im Urlaub erreichbar:</strong> Lisa läuft einfach weiter, während du am See oder in den Bergen bist. Du bekommst die Anfragen auf WhatsApp und entscheidest selbst, was wichtig genug für einen Rückruf ist.</span>
+      </div>
+    </div>
+  </section>
+
   <!-- TRADES -->
   <section class="sec">
     <div class="container">
@@ -1074,7 +1163,7 @@
           <p>Es dauert keine 90 Sekunden. Danach verstehst du sofort, warum das für Handwerksbetriebe so stark ist. Lisa spielt einen echten Kundenanruf durch — freundlich, normal, ohne kompliziertes KI-Gerede.</p>
         </div>
         <div class="mini-demo-cta fade d2">
-          <a href="tel:+43" class="btn-call"><i class="ph-fill ph-phone"></i> +43 XXX XXX XXX</a>
+          <a href="tel:+43720080748" class="btn-call"><i class="ph-fill ph-phone"></i> +43 720 080 748</a>
           <span class="mini-demo-fine">Kostenlos · Echte KI · ~90 Sekunden</span>
         </div>
       </div>
@@ -1155,7 +1244,7 @@
           <div class="about-contact">
             <a href="https://wa.me/43XXXXXXXXX" target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i> WhatsApp</a>
             <a href="mailto:hallo@epowergmbh.at"><i class="ph ph-envelope-simple"></i> hallo@epowergmbh.at</a>
-            <a href="tel:+43"><i class="ph ph-phone"></i> Direkt anrufen</a>
+            <a href="tel:+43720080748"><i class="ph ph-phone"></i> Direkt anrufen</a>
           </div>
         </div>
       </div>
@@ -1242,7 +1331,7 @@
           <div class="final-card-ic"><i class="ph-fill ph-phone-incoming"></i></div>
           <h3>Demo anhören</h3>
           <p>Ruf die Demo-Nummer an und teste Lisa selbst. 90 Sekunden reichen meistens, um zu verstehen, wie das klingt.</p>
-          <a href="tel:+43" class="final-action"><i class="ph-fill ph-phone"></i> +43 XXX XXX XXX</a>
+          <a href="tel:+43720080748" class="final-action"><i class="ph-fill ph-phone"></i> +43 720 080 748</a>
         </div>
         <div class="final-card alt fade d2">
           <div class="final-card-ic" style="background:rgba(96,165,250,0.15);color:#60a5fa"><i class="ph-fill ph-chats-circle"></i></div>
@@ -1276,7 +1365,7 @@
           <ul>
             <li><a href="https://wa.me/43XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:hallo@epowergmbh.at">hallo@epowergmbh.at</a></li>
-            <li><a href="tel:+43">+43 XXX XXX XXX</a></li>
+            <li><a href="tel:+43720080748">+43 720 080 748</a></li>
           </ul>
         </div>
       </div>
@@ -1298,7 +1387,7 @@
 
   <!-- STICKY CTA -->
   <div class="sticky-cta" id="stickyCta">
-    <a href="tel:+43" class="btn"><i class="ph-fill ph-phone"></i> Demo jetzt anrufen — kostenlos</a>
+    <a href="tel:+43720080748" class="btn"><i class="ph-fill ph-phone"></i> Demo jetzt anrufen — kostenlos</a>
   </div>
 
   <script>
