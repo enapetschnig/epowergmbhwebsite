@@ -767,159 +767,75 @@
       margin-top: 28px;
     }
 
-    /* ===== TERMIN / FINAL CTA ===== */
-    .termin-grid {
-      display: grid; grid-template-columns: 1fr; gap: 32px;
-      align-items: start;
-    }
-    @media (min-width: 900px) { .termin-grid { grid-template-columns: 1.05fr 1fr; gap: 48px; } }
-    .termin-left .h2 { color: #fff; max-width: 460px; }
-    .termin-intro {
-      margin-top: 14px; font-size: 16px; line-height: 1.7;
-      color: #a1a1aa; max-width: 460px;
-    }
-    .termin-list {
-      list-style: none; padding: 0;
-      margin-top: 22px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .termin-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 15px; color: #e4e4e7; font-weight: 500;
-    }
-    .termin-list li i {
-      font-size: 20px; color: #86efac; flex-shrink: 0;
-    }
-    .termin-alt {
-      margin-top: 26px;
-      padding: 14px 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--r);
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; color: #d4d4d8;
-    }
-    .termin-alt i { font-size: 20px; color: #86efac; flex-shrink: 0; }
-    .termin-alt a {
-      color: #fff; font-weight: 700; text-decoration: none;
-      border-bottom: 1px dashed rgba(255,255,255,0.4);
-      padding-bottom: 1px; transition: border-color 0.2s;
-    }
-    .termin-alt a:hover { border-color: #fff; }
+    /* ===== FINAL CTA ===== */
+    .final-head { text-align: center; max-width: 620px; margin: 0 auto; }
+    .final-head .h2 { color: #fff; margin: 0 auto; }
+    .final-sub { font-size: 16px; color: #a1a1aa; margin-top: 12px; line-height: 1.7; max-width: 520px; margin-left: auto; margin-right: auto; }
 
-    .termin-form-wrap {
-      background: #fff;
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.45), 0 8px 24px -8px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    @media (min-width: 768px) { .termin-form-wrap { padding: 32px 30px; } }
-
-    .form-label-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 16px;
-      margin-bottom: 18px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .form-step-tag {
-      font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--accent);
-    }
-    .form-meta {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--text-3);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .form-meta-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
-      box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
-      animation: tag-pulse 2s infinite;
-    }
-    .termin-form { display: flex; flex-direction: column; gap: 14px; }
-    .form-row {
+    .final-actions {
+      margin-top: 32px;
       display: grid; grid-template-columns: 1fr; gap: 14px;
+      max-width: 820px; margin-left: auto; margin-right: auto;
     }
-    @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
-    .field { display: flex; flex-direction: column; gap: 6px; }
-    .field label {
-      font-size: 13px; font-weight: 600; color: var(--text);
-    }
-    .field-opt { color: var(--text-3); font-weight: 500; font-size: 12px; }
-    .field input {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 15px; font-family: var(--font);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .field input::placeholder { color: #b5b5b0; }
-    .field input:focus {
-      outline: none;
-      border-color: var(--accent);
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(13,107,61,0.1);
-    }
-    .field input.error { border-color: #dc2626; background: #fef2f2; }
-    .error-msg { display: none; color: #dc2626; font-size: 12px; font-weight: 500; }
-    .field input.error ~ .error-msg { display: block; }
-    .form-submit-btn {
-      width: 100%; justify-content: center;
-      margin-top: 4px;
-    }
-    .form-fine {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: 4px;
-      font-size: 12px; color: var(--text-3);
-      text-align: center;
-    }
-    .form-fine i { font-size: 14px; color: var(--accent); }
+    @media (min-width: 700px) { .final-actions { grid-template-columns: 1fr 1fr; gap: 16px; } }
 
-    .termin-success {
-      display: none;
-      text-align: center;
-      padding: 12px 4px;
-    }
-    .termin-success.shown { display: block; animation: success-in 0.5s cubic-bezier(0.16,1,0.3,1); }
-    @keyframes success-in {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .success-ic {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: var(--accent-soft);
-      color: var(--accent);
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 36px;
-      margin: 8px auto 16px;
-    }
-    .termin-success h3 {
-      font-size: 20px; font-weight: 800; color: var(--text);
-      margin-bottom: 10px; letter-spacing: -0.01em;
-    }
-    .termin-success p {
-      font-size: 14px; color: var(--text-2); line-height: 1.65;
-      margin-bottom: 20px; max-width: 360px; margin-left: auto; margin-right: auto;
-    }
-
-    /* Form floating CTA in body — used for inline buttons that link to #termin */
-    .inline-termin-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-weight: 700; font-size: 14px;
-      border-radius: 100px;
+    .btn-cta {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px;
+      border-radius: 16px;
       text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+      text-align: left;
     }
-    .inline-termin-cta:hover { background: var(--accent-soft); border-color: var(--accent); }
-    .inline-termin-cta i { font-size: 16px; }
+    .btn-cta:hover { transform: translateY(-2px); }
+    .btn-cta:active { transform: translateY(0); }
+
+    .btn-cta-primary {
+      background: #fff;
+      color: var(--accent);
+      box-shadow: 0 12px 28px -8px rgba(255,255,255,0.15), 0 4px 10px -4px rgba(0,0,0,0.2);
+    }
+    .btn-cta-primary:hover { box-shadow: 0 16px 36px -10px rgba(255,255,255,0.22), 0 6px 14px -4px rgba(0,0,0,0.25); }
+    .btn-cta-primary .btn-cta-ic { background: var(--accent-soft); color: var(--accent); }
+
+    .btn-cta-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .btn-cta-secondary:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.2); }
+    .btn-cta-secondary .btn-cta-ic { background: rgba(134,239,172,0.15); color: #86efac; }
+    .btn-cta-secondary .btn-cta-desc { color: rgba(255,255,255,0.55); }
+
+    .btn-cta-ic {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .btn-cta-body { flex: 1; min-width: 0; }
+    .btn-cta-title {
+      font-size: 16px; font-weight: 800;
+      letter-spacing: -0.01em; line-height: 1.25;
+    }
+    .btn-cta-desc {
+      font-size: 12px; color: var(--text-3);
+      font-weight: 500; margin-top: 3px;
+      letter-spacing: 0;
+    }
+    .btn-cta-arrow {
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      opacity: 0.6;
+    }
+    .btn-cta:hover .btn-cta-arrow { transform: translateX(3px); opacity: 1; }
+
+    .final-fine {
+      text-align: center; font-size: 13px; color: #71717a;
+      margin-top: 28px;
+    }
 
     /* ===== FOOTER ===== */
     .footer { background: #18181b; border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 0 20px; }
@@ -985,7 +901,7 @@
         <a href="ki-assistent.html" class="active nav-new">KI-Telefon <span class="nav-badge">Aktuell</span></a>
         <a href="/#faq">FAQ</a>
       </div>
-      <a href="#termin" class="btn"><i class="ph ph-calendar-plus"></i> Termin buchen</a>
+      <a href="termin.html" class="btn"><i class="ph ph-calendar-plus"></i> Termin buchen</a>
     </div>
   </nav>
 
@@ -1034,7 +950,7 @@
         </div>
       </div>
 
-      <p class="demo-secondary fade d3">Lieber sprechen, wie das für dich aussehen würde? <a href="#termin">Kostenlosen Termin vereinbaren →</a></p>
+      <p class="demo-secondary fade d3">Lieber sprechen, wie das für dich aussehen würde? <a href="termin.html">Kostenlosen Termin vereinbaren →</a></p>
     </div>
   </section>
 
@@ -1303,7 +1219,7 @@
       </div>
       <div class="trades-bottom fade d7">
         <i class="ph ph-info"></i>
-        <p><strong>Dein Gewerk nicht dabei?</strong> Die KI lässt sich individuell anpassen. <a href="#termin">Vereinbar einen kurzen Termin — ich zeig dir wie.</a></p>
+        <p><strong>Dein Gewerk nicht dabei?</strong> Die KI lässt sich individuell anpassen. <a href="termin.html">Vereinbar einen kurzen Termin — ich zeig dir wie.</a></p>
       </div>
     </div>
   </section>
@@ -1396,7 +1312,7 @@
           <div class="about-card-name">Chris Napetschnig</div>
           <div class="about-card-role">Geschäftsführer, ePower GmbH</div>
           <div class="about-contact">
-            <a href="#termin"><i class="ph-fill ph-calendar-plus"></i> Kostenlosen Termin buchen</a>
+            <a href="termin.html"><i class="ph-fill ph-calendar-plus"></i> Kostenlosen Termin buchen</a>
             <a href="mailto:hallo@epowergmbh.at"><i class="ph ph-envelope-simple"></i> hallo@epowergmbh.at</a>
             <a href="tel:+43720080748"><i class="ph ph-phone"></i> Direkt anrufen</a>
           </div>
@@ -1472,72 +1388,36 @@
     </div>
   </section>
 
-  <!-- TERMIN / FINAL CTA -->
-  <section class="sec final-cta" id="termin">
+  <!-- FINAL CTA -->
+  <section class="sec final-cta">
     <div class="container">
-      <div class="termin-grid">
-        <div class="termin-left fade">
-          <div class="tag" style="color:#86efac;background:rgba(134,239,172,0.1);padding:4px 10px;border-radius:100px;"><i class="ph ph-calendar-plus"></i> Kostenlosen Termin vereinbaren</div>
-          <h2 class="h2">Lass uns 15 Minuten telefonieren — dann weißt du, ob's für dich passt.</h2>
-          <p class="termin-intro">Kurzes Gespräch, ich zeig dir konkret, wie Lisa für deinen Betrieb aussieht, beantworte alle Fragen und du entscheidest in Ruhe.</p>
-          <ul class="termin-list">
-            <li><i class="ph-fill ph-check-circle"></i> Konkret für dein Gewerk durchgesprochen</li>
-            <li><i class="ph-fill ph-check-circle"></i> Alle Fragen offen geklärt</li>
-            <li><i class="ph-fill ph-check-circle"></i> Kostenlos &amp; komplett unverbindlich</li>
-            <li><i class="ph-fill ph-check-circle"></i> Keine Verkaufsmasche</li>
-          </ul>
-          <div class="termin-alt">
-            <i class="ph-fill ph-phone"></i>
-            <span>Lieber gleich Lisa testen? <a href="tel:+43720080748">+43 720 080 748 anrufen →</a></span>
-          </div>
-        </div>
-
-        <div class="termin-form-wrap fade d2">
-          <form class="termin-form" id="terminForm" onsubmit="submitTermin(event)">
-            <div class="form-label-row">
-              <div class="form-step-tag">Termin in 30 Sekunden anfragen</div>
-              <div class="form-meta"><span class="form-meta-dot"></span> kostenlos</div>
-            </div>
-            <div class="form-row">
-              <div class="field">
-                <label for="t-firstName">Vorname</label>
-                <input type="text" id="t-firstName" placeholder="z.B. Thomas" required>
-                <span class="error-msg">Bitte Vorname eingeben</span>
-              </div>
-              <div class="field">
-                <label for="t-lastName">Nachname</label>
-                <input type="text" id="t-lastName" placeholder="z.B. Hofer" required>
-                <span class="error-msg">Bitte Nachname eingeben</span>
-              </div>
-            </div>
-            <div class="field">
-              <label for="t-company">Betrieb</label>
-              <input type="text" id="t-company" placeholder="z.B. Hofer Elektrotechnik GmbH" required>
-              <span class="error-msg">Bitte Betrieb eingeben</span>
-            </div>
-            <div class="field">
-              <label for="t-phone">Telefonnummer</label>
-              <input type="tel" id="t-phone" placeholder="+43 660 1234567" required>
-              <span class="error-msg">Bitte Telefonnummer eingeben</span>
-            </div>
-            <div class="field">
-              <label for="t-wunsch">Wann am besten erreichbar? <span class="field-opt">(optional)</span></label>
-              <input type="text" id="t-wunsch" placeholder="z.B. ab 17:00 oder Samstag vormittag">
-            </div>
-            <button type="submit" class="btn btn-lg form-submit-btn">
-              Kostenlosen Termin anfragen <i class="ph ph-arrow-right"></i>
-            </button>
-            <p class="form-fine"><i class="ph ph-shield-check"></i> Ich melde mich innerhalb von 24 Stunden persönlich.</p>
-          </form>
-
-          <div class="termin-success" id="terminSuccess">
-            <div class="success-ic"><i class="ph-fill ph-check-circle"></i></div>
-            <h3>Passt, ich melde mich!</h3>
-            <p>Danke. Ich rufe dich innerhalb von 24 Stunden zurück — meistens schneller. Bis dahin kannst du die Demo-Nummer kurz testen, dann hast du gleich ein Gefühl, wie Lisa klingt.</p>
-            <a href="tel:+43720080748" class="btn btn-lg" style="background:#fff;color:var(--accent);"><i class="ph-fill ph-phone"></i> Demo jetzt anrufen</a>
-          </div>
-        </div>
+      <div class="final-head fade">
+        <div class="tag" style="color:#86efac;background:rgba(134,239,172,0.1);padding:4px 10px;border-radius:100px;display:inline-flex;align-items:center;gap:6px;"><i class="ph-fill ph-rocket-launch"></i> Loslegen</div>
+        <h2 class="h2">Schau dir's an — entscheide dann in Ruhe.</h2>
+        <p class="final-sub">Zwei Wege, kein Druck: Demo selbst anhören oder 15 Minuten telefonieren und alle Fragen klären.</p>
       </div>
+
+      <div class="final-actions fade d2">
+        <a href="termin.html" class="btn-cta btn-cta-primary">
+          <div class="btn-cta-ic"><i class="ph-fill ph-calendar-plus"></i></div>
+          <div class="btn-cta-body">
+            <div class="btn-cta-title">Kostenlosen Termin buchen</div>
+            <div class="btn-cta-desc">15 Min · ich melde mich in ≤24h</div>
+          </div>
+          <i class="ph ph-arrow-right btn-cta-arrow"></i>
+        </a>
+
+        <a href="tel:+43720080748" class="btn-cta btn-cta-secondary">
+          <div class="btn-cta-ic"><i class="ph-fill ph-phone"></i></div>
+          <div class="btn-cta-body">
+            <div class="btn-cta-title">Demo anrufen — 90 Sek.</div>
+            <div class="btn-cta-desc">+43 720 080 748 · echte KI live</div>
+          </div>
+          <i class="ph ph-arrow-right btn-cta-arrow"></i>
+        </a>
+      </div>
+
+      <p class="final-fine fade d3">Unverbindlich · Kostenlos · Keine Verkaufsmasche</p>
     </div>
   </section>
 
@@ -1560,7 +1440,7 @@
         <div class="footer-col">
           <h4>Kontakt</h4>
           <ul>
-            <li><a href="#termin">Kostenlosen Termin buchen</a></li>
+            <li><a href="termin.html">Kostenlosen Termin buchen</a></li>
             <li><a href="mailto:hallo@epowergmbh.at">hallo@epowergmbh.at</a></li>
             <li><a href="tel:+43720080748">+43 720 080 748</a></li>
           </ul>
@@ -1629,47 +1509,6 @@
       });
     });
 
-    // Termin form submission
-    function submitTermin(e) {
-      e.preventDefault();
-      const fields = ['t-firstName', 't-lastName', 't-company', 't-phone'];
-      let valid = true;
-      fields.forEach(id => {
-        const input = document.getElementById(id);
-        if (!input.value.trim()) { input.classList.add('error'); valid = false; }
-        else { input.classList.remove('error'); }
-      });
-      if (!valid) return;
-
-      const payload = {
-        vorname: document.getElementById('t-firstName').value.trim(),
-        nachname: document.getElementById('t-lastName').value.trim(),
-        unternehmen: document.getElementById('t-company').value.trim(),
-        telefon: document.getElementById('t-phone').value.trim(),
-        wunschzeit: document.getElementById('t-wunsch').value.trim(),
-        quelle: 'ki-assistent'
-      };
-
-      fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
-
-      // Track lead with Meta Pixel
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', { content_name: 'KI-Assistent Termin' });
-      }
-
-      document.getElementById('terminForm').style.display = 'none';
-      const success = document.getElementById('terminSuccess');
-      success.classList.add('shown');
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    document.querySelectorAll('.field input').forEach(input => {
-      input.addEventListener('input', () => input.classList.remove('error'));
-    });
   </script>
 
 </body>
