@@ -113,6 +113,8 @@
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--accent); font-weight: 600; }
+    /* Nav-CTA auf Mobil ausblenden — Sticky-CTA unten übernimmt */
+    @media (max-width: 767px) { .nav-inner > .cta-beratung { display: none; } }
     .nav-new { display: inline-flex !important; align-items: center; gap: 6px; }
     .nav-badge {
       font-size: 9px; font-weight: 800; letter-spacing: 0.08em;
@@ -1069,61 +1071,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="sec">
-    <div class="container">
-      <div class="fade">
-        <div class="tag"><i class="ph ph-path"></i> So funktioniert's</div>
-        <h2 class="h2">In 30 Minuten eingerichtet.</h2>
-      </div>
-      <div class="how-grid">
-        <div class="how-card fade d1">
-          <div class="how-num">1</div>
-          <h3>Wir telefonieren — 15 Minuten</h3>
-          <p>Du erklärst mir, wie dein Betrieb läuft.</p>
-          <ul class="how-list">
-            <li><i class="ph ph-check"></i> welche Anrufe reinkommen</li>
-            <li><i class="ph ph-check"></i> welche Fragen wichtig sind</li>
-            <li><i class="ph ph-check"></i> welche Notfälle Priorität haben</li>
-            <li><i class="ph ph-check"></i> wie deine Kunden sprechen</li>
-          </ul>
-        </div>
-        <div class="how-card fade d2">
-          <div class="how-num">2</div>
-          <h3>Ich richte alles ein</h3>
-          <p>Während du arbeitest, richte ich die KI auf deinen Betrieb ein — Gewerk, Kunden, typische Anfragen.</p>
-          <ul class="how-list">
-            <li><i class="ph ph-check"></i> Sprachstil deiner Branche</li>
-            <li><i class="ph ph-check"></i> österreichische Begriffe &amp; Dialekt</li>
-            <li><i class="ph ph-check"></i> Notfall-Erkennung</li>
-          </ul>
-        </div>
-        <div class="how-card fade d3">
-          <div class="how-num">3</div>
-          <h3>Telefon umleiten</h3>
-          <p>Wenn du nicht rangehst oder beschäftigt bist, übernimmt Lisa. Du bekommst:</p>
-          <ul class="how-list">
-            <li><i class="ph ph-check"></i> alle Infos als SMS aufs Handy</li>
-            <li><i class="ph ph-check"></i> saubere Zusammenfassungen</li>
-            <li><i class="ph ph-check"></i> Notfall-Benachrichtigungen</li>
-            <li><i class="ph ph-check"></i> vollständige Kundendaten</li>
-          </ul>
-        </div>
-      </div>
-      <div class="how-bottom fade d4">
-        <i class="ph ph-hand-waving"></i>
-        <span>Du brauchst dafür kein technisches Wissen. Ich richte alles für dich ein.</span>
-      </div>
-      <div class="cta-row fade d5">
-        <a href="termin.html" class="cta-beratung">
-          <i class="ph-fill ph-calendar-plus"></i> Kostenlose Beratung
-          <i class="ph ph-arrow-right cta-arrow"></i>
-        </a>
-        <span class="cta-meta">Wir besprechen alles in Ruhe am Telefon</span>
-      </div>
-    </div>
-  </section>
-
   <!-- COMPARISON -->
   <section class="sec compare">
     <div class="container">
@@ -1356,6 +1303,61 @@
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="sec">
+    <div class="container">
+      <div class="fade">
+        <div class="tag"><i class="ph ph-path"></i> So funktioniert's</div>
+        <h2 class="h2">In 30 Minuten eingerichtet.</h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-card fade d1">
+          <div class="how-num">1</div>
+          <h3>Wir telefonieren — 15 Minuten</h3>
+          <p>Du erklärst mir, wie dein Betrieb läuft.</p>
+          <ul class="how-list">
+            <li><i class="ph ph-check"></i> welche Anrufe reinkommen</li>
+            <li><i class="ph ph-check"></i> welche Fragen wichtig sind</li>
+            <li><i class="ph ph-check"></i> welche Notfälle Priorität haben</li>
+            <li><i class="ph ph-check"></i> wie deine Kunden sprechen</li>
+          </ul>
+        </div>
+        <div class="how-card fade d2">
+          <div class="how-num">2</div>
+          <h3>Ich richte alles ein</h3>
+          <p>Während du arbeitest, richte ich die KI auf deinen Betrieb ein — Gewerk, Kunden, typische Anfragen.</p>
+          <ul class="how-list">
+            <li><i class="ph ph-check"></i> Sprachstil deiner Branche</li>
+            <li><i class="ph ph-check"></i> österreichische Begriffe &amp; Dialekt</li>
+            <li><i class="ph ph-check"></i> Notfall-Erkennung</li>
+          </ul>
+        </div>
+        <div class="how-card fade d3">
+          <div class="how-num">3</div>
+          <h3>Telefon umleiten</h3>
+          <p>Wenn du nicht rangehst oder beschäftigt bist, übernimmt Lisa. Du bekommst:</p>
+          <ul class="how-list">
+            <li><i class="ph ph-check"></i> alle Infos als SMS aufs Handy</li>
+            <li><i class="ph ph-check"></i> saubere Zusammenfassungen</li>
+            <li><i class="ph ph-check"></i> Notfall-Benachrichtigungen</li>
+            <li><i class="ph ph-check"></i> vollständige Kundendaten</li>
+          </ul>
+        </div>
+      </div>
+      <div class="how-bottom fade d4">
+        <i class="ph ph-hand-waving"></i>
+        <span>Du brauchst dafür kein technisches Wissen. Ich richte alles für dich ein.</span>
+      </div>
+      <div class="cta-row fade d5">
+        <a href="termin.html" class="cta-beratung">
+          <i class="ph-fill ph-calendar-plus"></i> Kostenlose Beratung
+          <i class="ph ph-arrow-right cta-arrow"></i>
+        </a>
+        <span class="cta-meta">Wir besprechen alles in Ruhe am Telefon</span>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="sec" id="faq">
     <div class="container">
@@ -1490,6 +1492,13 @@
     </div>
   </footer>
 
+  <!-- STICKY CTA (mobile) -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="termin.html" class="cta-beratung" style="width:100%;justify-content:center;padding:14px 20px;">
+      <i class="ph-fill ph-calendar-plus"></i> Kostenlose Beratung
+      <i class="ph ph-arrow-right cta-arrow"></i>
+    </a>
+  </div>
 
   <script>
     const obs = new IntersectionObserver(e => {
