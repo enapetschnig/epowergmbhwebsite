@@ -22,7 +22,7 @@ if (TWILIO_SID && TWILIO_AUTH) {
 
 // Lead endpoint
 app.post('/api/lead', async (req, res) => {
-  const { vorname, nachname, unternehmen, telefon, quelle, gf, mitarbeiter, wunschzeit, chef, gewerk, anrufe } = req.body;
+  const { vorname, nachname, unternehmen, telefon, quelle, gf, mitarbeiter, wunschzeit, chef, gewerk, anrufe, handwerk } = req.body;
 
   if (!vorname || !nachname || !telefon) {
     return res.status(400).json({ error: 'Fehlende Pflichtfelder' });
@@ -36,6 +36,7 @@ app.post('/api/lead', async (req, res) => {
   message += `Tel: ${telefon}\n`;
   if (gf) message += `GF: ${gf}\n`;
   if (mitarbeiter) message += `MA: ${mitarbeiter}\n`;
+  if (handwerk) message += `Handwerksbetrieb: ${handwerk}\n`;
   if (chef) message += `Chef: ${chef}\n`;
   if (gewerk) message += `Gewerk: ${gewerk}\n`;
   if (anrufe) message += `Verpasste Anrufe: ${anrufe}\n`;
