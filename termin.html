@@ -383,10 +383,6 @@
           <input type="tel" id="phone" placeholder="+43 660 1234567" required autocomplete="tel">
           <span class="error-msg">Bitte Telefonnummer eingeben</span>
         </div>
-        <div class="field">
-          <label for="wunsch">Wann bist du am besten erreichbar? <span class="field-opt">(optional)</span></label>
-          <input type="text" id="wunsch" placeholder="z.B. ab 17:00 oder Samstag vormittag">
-        </div>
         <button type="submit" class="btn btn-block">
           Kostenlose Beratung anfragen <i class="ph ph-arrow-right"></i>
         </button>
@@ -431,7 +427,7 @@
   </footer>
 
   <script>
-    const data = { handwerk: '', vorname: '', nachname: '', unternehmen: '', telefon: '', wunschzeit: '' };
+    const data = { handwerk: '', vorname: '', nachname: '', unternehmen: '', telefon: '' };
     let current = 1;
     // Index entspricht Step-ID. Step 0 existiert nicht mehr — wir starten bei Step 1.
     const progressPct = [0, 33, 66, 90, 100];
@@ -508,7 +504,6 @@
       phone.classList.remove('error');
 
       data.telefon = phone.value.trim();
-      data.wunschzeit = document.getElementById('wunsch').value.trim();
 
       fetch('/api/lead', {
         method: 'POST',
