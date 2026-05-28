@@ -16,7 +16,8 @@
   fbq('init', '904357749270302');
   fbq('init', '27472590922359131');
   fbq('track', 'PageView');
-  fbq('track', 'Lead');
+  // Lead-Event nur für den Telefon-Pixel (KI-Telefon-Funnel)
+  fbq('trackSingle', '27472590922359131', 'Lead');
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=904357749270302&ev=PageView&noscript=1"
@@ -302,54 +303,11 @@
     <!-- PROGRESS -->
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
 
-    <!-- STEP 0: INTRO -->
-    <div class="step active" id="step0">
-      <div class="step-tag"><i class="ph-fill ph-calendar-plus"></i> Kostenlose 15-Min-Beratung</div>
-      <h2>Lass uns 15 Minuten telefonieren — <span class="accent">dann weißt du, ob's für dich passt.</span></h2>
-      <p class="step-sub">Kurzes Gespräch am Telefon: Ich zeig dir konkret, wie der KI-Telefonassistent für deinen Betrieb aussieht und beantworte alle Fragen. Kostenlos und unverbindlich.</p>
-
-      <div class="intro-cards">
-        <div class="intro-card">
-          <div class="intro-ic"><i class="ph-fill ph-list-checks"></i></div>
-          <div class="intro-card-body">
-            <h4>Konkret für dich</h4>
-            <p>Wir gehen deinen Betrieb durch — kein Standard-Pitch.</p>
-          </div>
-        </div>
-        <div class="intro-card">
-          <div class="intro-ic"><i class="ph-fill ph-chats-circle"></i></div>
-          <div class="intro-card-body">
-            <h4>Alle Fragen geklärt</h4>
-            <p>Technik, Setup, Notfälle, Dialekt — frag, was du wissen willst.</p>
-          </div>
-        </div>
-        <div class="intro-card">
-          <div class="intro-ic"><i class="ph-fill ph-shield-check"></i></div>
-          <div class="intro-card-body">
-            <h4>Unverbindlich</h4>
-            <p>Kein Druck. Wenn's für dich nicht passt, sag ich's auch.</p>
-          </div>
-        </div>
-        <div class="intro-card">
-          <div class="intro-ic"><i class="ph-fill ph-clock"></i></div>
-          <div class="intro-card-body">
-            <h4>30 Sekunden</h4>
-            <p>So lange brauchst du für die paar Fragen.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="intro-start">
-        <button class="btn" onclick="goTo(1)">Los geht's <i class="ph ph-arrow-right"></i></button>
-        <span class="micro">3 kurze Fragen · kostenlos &amp; unverbindlich</span>
-      </div>
-    </div>
-
-    <!-- STEP 1: HANDWERKSBETRIEB? -->
-    <div class="step" id="step1">
+    <!-- STEP 1: CHEF + HANDWERKSBETRIEB? -->
+    <div class="step active" id="step1">
       <div class="step-tag"><i class="ph ph-hard-hat"></i> Frage 1 von 3</div>
-      <h2>Bist du ein Handwerksbetrieb?</h2>
-      <p class="step-sub">Lisa wurde speziell für Handwerker entwickelt — Elektriker, Installateure, Zimmerer, Dachdecker, Tischler und alle anderen Gewerke.</p>
+      <h2>Bist du Chef eines Handwerksbetriebs?</h2>
+      <p class="step-sub">Die kostenlose Beratung ist für Inhaber und Geschäftsführer von Handwerksbetrieben.</p>
 
       <div class="choices two-col">
         <button class="choice" data-value="ja" onclick="selectHandwerk(this, 'ja')">
@@ -357,7 +315,7 @@
           <div class="choice-icon"><i class="ph-fill ph-check"></i></div>
           <div class="choice-body">
             <div class="choice-text">Ja</div>
-            <div class="choice-desc">Handwerksbetrieb · Gewerk egal</div>
+            <div class="choice-desc">Chef · Inhaber · Geschäftsführer</div>
           </div>
         </button>
         <button class="choice" data-value="nein" onclick="selectHandwerk(this, 'nein')">
@@ -365,17 +323,17 @@
           <div class="choice-icon"><i class="ph ph-x"></i></div>
           <div class="choice-body">
             <div class="choice-text">Nein</div>
-            <div class="choice-desc">Andere Branche</div>
+            <div class="choice-desc">Mitarbeiter · andere Branche</div>
           </div>
         </button>
       </div>
 
       <div class="not-handwerk" id="notHandwerk">
-        <p>Alles klar! Lisa ist aktuell speziell auf Handwerksbetriebe ausgerichtet. Wenn du trotzdem Interesse hast, schreib mir einfach an <a href="mailto:hallo@epowergmbh.at">hallo@epowergmbh.at</a> — vielleicht passt's ja doch.</p>
+        <p>Alles klar! Die kostenlose Beratung richtet sich an Chefs von Handwerksbetrieben. Wenn du trotzdem Interesse hast oder den Link weiterleiten willst, schreib mir gerne an <a href="mailto:hallo@epowergmbh.at">hallo@epowergmbh.at</a>.</p>
       </div>
 
       <div class="step-actions">
-        <button class="step-back" onclick="goTo(0)"><i class="ph ph-arrow-left"></i> Zurück</button>
+        <a href="ki-assistent.html" class="step-back"><i class="ph ph-arrow-left"></i> Zurück zur Übersicht</a>
       </div>
     </div>
 
@@ -474,8 +432,9 @@
 
   <script>
     const data = { handwerk: '', vorname: '', nachname: '', unternehmen: '', telefon: '', wunschzeit: '' };
-    let current = 0;
-    const progressPct = [5, 30, 60, 90, 100];
+    let current = 1;
+    // Index entspricht Step-ID. Step 0 existiert nicht mehr — wir starten bei Step 1.
+    const progressPct = [0, 33, 66, 90, 100];
 
     function setProgress(step) {
       document.getElementById('progressFill').style.width = progressPct[step] + '%';
@@ -567,8 +526,9 @@
       input.addEventListener('input', () => input.classList.remove('error'));
     });
 
+    setProgress(1);
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => { document.getElementById('step0').classList.add('visible'); });
+      requestAnimationFrame(() => { document.getElementById('step1').classList.add('visible'); });
     });
   </script>
 
