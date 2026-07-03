@@ -165,7 +165,8 @@
     /* ===== REVIEWS ===== */
     .reviews { background: var(--surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
     .reviews-head { margin-bottom: 32px; }
-    .g-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; }
+    .g-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; text-decoration: none; color: inherit; }
+    .g-badge:hover .g-info span { color: var(--accent); }
     .g-num { font-size: 40px; font-weight: 900; letter-spacing: -0.03em; }
     .g-info { display: flex; flex-direction: column; gap: 1px; }
     .stars { display: flex; gap: 1px; color: #f59e0b; font-size: 18px; }
@@ -186,8 +187,9 @@
     }
     .r-name { font-size: 13px; font-weight: 600; color: var(--text); }
     .r-role { font-size: 11px; color: var(--text-3); }
-    .r-source { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-3); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-light); }
+    .r-source { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-3); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-light); text-decoration: none; }
     .r-source i { font-size: 14px; }
+    a.r-source:hover { color: var(--accent); }
 
     /* Screenshot review cards */
     .r-card-screenshot { overflow: hidden; }
@@ -524,47 +526,57 @@
       <div class="reviews-head fade">
         <div class="tag"><i class="ph ph-star"></i> Social Proof</div>
         <h2 class="h2">Das sagen unsere Kunden</h2>
-        <div class="g-badge">
-          <div class="g-num">5.0</div>
+        <a class="g-badge" href="https://maps.google.com/?cid=7478522709138544815" target="_blank" rel="noopener">
+          <div class="g-num">4,9</div>
           <div class="g-info">
             <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-            <span>Google-Bewertungen</span>
+            <span>118 Google-Rezensionen · Auf Google ansehen</span>
           </div>
-        </div>
+        </a>
       </div>
       <div class="reviews-grid">
-        <!-- Google Review 1 -->
+        <!-- Google Review 1 (Franz Fabian, Holzbau Gasser) -->
         <div class="r-card fade d1">
           <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="r-text">Wir haben uns eine individuelle Software für unsere internen Abläufe entwickeln lassen und sind rundum zufrieden. Vom ersten Gespräch bis zur Umsetzung hat alles gepasst.</p>
+          <p class="r-text">Super professionelle Umsetztung unserer Digitalisierungs-Offensive im Betrieb! Alles passgenau auf unsere Bedürfnisse abgestimmt und absolut lösungsorientiert in jeder Hinsicht! Wir können Christoph und sein Team absolut empfehlen! Lg von Fa. Holzbau Gasser aus Kärnten</p>
           <div class="r-author">
-            <div class="r-avatar">S.H.</div>
-            <div><div class="r-name">Stefan Hölzler</div><div class="r-role">Vor 7 Wochen</div></div>
+            <div class="r-avatar">F.F.</div>
+            <div><div class="r-name">Franz Fabian</div><div class="r-role">Holzbau Gasser, Kärnten · Neu</div></div>
           </div>
-          <div class="r-source"><i class="ph ph-google-logo"></i> Google-Bewertung</div>
+          <a class="r-source" href="https://maps.google.com/?cid=7478522709138544815" target="_blank" rel="noopener"><i class="ph ph-google-logo"></i> Google-Bewertung ansehen</a>
         </div>
-        <!-- Google Review 2 -->
+        <!-- Google Review 2 (Stefan Hölzler) -->
         <div class="r-card fade d2">
           <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="r-text">Dank der Automatisierungen der ePower GmbH können wir unsere Angebote jetzt extrem schnell erstellen — ein echter Gamechanger für unseren Betrieb.</p>
+          <p class="r-text">Wir haben uns eine individuelle Software für unsere internen Abläufe entwickeln lassen und sind rundum zufrieden. Vom ersten Beratungsgespräch bis zur finalen Umsetzung lief alles reibungslos und sehr professionell. Alle unsere Wünsche und Anforderungen wurden verstanden und exakt umgesetzt. Klare Kommunikation, zuverlässige Umsetzung und ein tolles Ergebnis – absolut empfehlenswert!</p>
           <div class="r-author">
-            <div class="r-avatar">L.B.</div>
-            <div><div class="r-name">Lukasz Baranowski</div><div class="r-role">Vor 12 Wochen</div></div>
+            <div class="r-avatar">S.H.</div>
+            <div><div class="r-name">Stefan Hölzler</div><div class="r-role">Vor 4 Monaten</div></div>
           </div>
-          <div class="r-source"><i class="ph ph-google-logo"></i> Google-Bewertung</div>
+          <a class="r-source" href="https://maps.google.com/?cid=7478522709138544815" target="_blank" rel="noopener"><i class="ph ph-google-logo"></i> Google-Bewertung ansehen</a>
         </div>
-        <!-- Google Review 3 -->
+        <!-- Google Review 3 (Lukasz Baranowski) -->
         <div class="r-card fade d3">
           <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <p class="r-text">Top-Techniker, cooler Typ und echte Ergebnisse. Die Automatisierungen sparen mir massiv Kosten und machen den Arbeitsalltag deutlich effizienter. Kein Bla-Bla, sondern saubere Lösungen, die wirklich funktionieren. Klare Empfehlung!</p>
+          <p class="r-text">Dank der Automatisierungen der ePower GmbH können wir unsere Angebote jetzt extrem schnell erstellen – ein echter Wettbewerbsvorteil. Prozesse, die früher Zeit und Nerven gekostet haben, laufen heute strukturiert, sauber und nahezu automatisch. Das spart nicht nur massiv Zeit, sondern auch spürbar Geld im laufenden Betrieb. Klare Empfehlung für Unternehmen, die ihre Abläufe professionalisieren und beschleunigen wollen.</p>
+          <div class="r-author">
+            <div class="r-avatar">L.B.</div>
+            <div><div class="r-name">Lukasz Baranowski</div><div class="r-role">Vor 6 Monaten</div></div>
+          </div>
+          <a class="r-source" href="https://maps.google.com/?cid=7478522709138544815" target="_blank" rel="noopener"><i class="ph ph-google-logo"></i> Google-Bewertung ansehen</a>
+        </div>
+        <!-- Google Review 4 (Glühwürmchenhütte) -->
+        <div class="r-card fade d4">
+          <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+          <p class="r-text">Top-Techniker, cooler Typ und echte Ergebnisse. Die Automatisierungen der ePower GmbH sparen mir massiv Kosten und machen den Arbeitsalltag deutlich effizienter. Kein Bla-Bla, sondern saubere Lösungen, die wirklich funktionieren. Genau so stellt man sich moderne Technikpartner vor – klare Empfehlung!</p>
           <div class="r-author">
             <div class="r-avatar" style="font-size: 11px;">G.R.</div>
-            <div><div class="r-name">Glühwürmchenhütte & Romantikhütte</div><div class="r-role">Vor 12 Wochen</div></div>
+            <div><div class="r-name">Glühwürmchenhütte & Romantikhütte</div><div class="r-role">Vor 6 Monaten</div></div>
           </div>
-          <div class="r-source"><i class="ph ph-google-logo"></i> Google-Bewertung</div>
+          <a class="r-source" href="https://maps.google.com/?cid=7478522709138544815" target="_blank" rel="noopener"><i class="ph ph-google-logo"></i> Google-Bewertung ansehen</a>
         </div>
         <!-- Email Review -->
-        <div class="r-card r-card-screenshot fade d4">
+        <div class="r-card r-card-screenshot fade d5">
           <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
           <p class="r-text" style="font-style: italic;">"Ansonsten ist es top top top! Hab echt eine Freude damit und meine Leute auch!!!!"</p>
           <img src="/email-review.png" alt="E-Mail-Feedback von Mario" loading="lazy">
