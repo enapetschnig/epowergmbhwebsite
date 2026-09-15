@@ -208,35 +208,32 @@
     .r-card-screenshot .r-caption-text { font-size: 13px; font-weight: 600; color: var(--text); }
     .r-card-screenshot .r-caption-sub { font-size: 11px; color: var(--text-3); }
 
-    /* ===== KUNDEN / LOGOS ===== */
-    .kunden { padding-top: 8px; }
-    @media (min-width: 768px) { .kunden { padding-top: 16px; } }
-    .kunden-head { text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 32px; }
-    .kunden-head .h2 { max-width: 720px; }
-    .kunden-head .sub { max-width: 560px; }
-    .kunden-count {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
-      padding: 8px 16px; border-radius: 100px; background: var(--accent-soft); color: var(--accent);
-      font-size: 13px; font-weight: 700;
+    /* ===== KUNDEN / LOGO-BAND ===== */
+    .kunden { padding: 8px 0 40px; }
+    @media (min-width: 768px) { .kunden { padding: 12px 0 56px; } }
+    .kunden-label {
+      text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 22px;
     }
-    .kunden-count i { font-size: 16px; }
-    .logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    @media (min-width: 768px) { .logo-grid { gap: 16px; } }
-    .logo-card {
-      flex: 0 0 calc(50% - 6px); min-height: 118px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-      padding: 18px 16px 14px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--r-lg);
-      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s;
+    .marquee {
+      position: relative; overflow: hidden; width: 100%;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
     }
-    @media (min-width: 640px) { .logo-card { flex-basis: calc(33.333% - 11px); } }
-    @media (min-width: 900px) { .logo-card { flex-basis: calc(25% - 12px); } }
-    @media (min-width: 1100px) { .logo-card { flex-basis: calc(20% - 13px); min-height: 128px; } }
-    .logo-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.07); border-color: var(--border); }
-    .logo-card img {
-      height: 52px; width: 78%; object-fit: contain; display: block;
+    .marquee-track {
+      display: flex; align-items: center; gap: 56px; width: max-content;
+      animation: marquee 55s linear infinite;
     }
-    @media (min-width: 1100px) { .logo-card img { height: 58px; } }
-    .logo-card span { font-size: 11px; font-weight: 600; color: var(--text-3); text-align: center; line-height: 1.3; letter-spacing: 0.01em; }
+    @media (min-width: 768px) { .marquee-track { gap: 72px; } }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track img {
+      height: 40px; width: auto; max-width: 150px; object-fit: contain; display: block; flex-shrink: 0;
+      opacity: 0.85; transition: opacity 0.2s;
+    }
+    @media (min-width: 768px) { .marquee-track img { height: 46px; max-width: 170px; } }
+    .marquee-track img:hover { opacity: 1; }
+    @keyframes marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
     /* ===== PROBLEM ===== */
     .problem-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 28px; }
@@ -550,35 +547,51 @@
     </div>
   </section>
 
-  <!-- KUNDEN / LOGOS -->
-  <section class="sec kunden" id="kunden">
+  <!-- KUNDEN / LOGO-BAND -->
+  <section class="kunden" id="kunden">
     <div class="container">
-      <div class="kunden-head fade">
-        <div class="tag"><i class="ph ph-buildings"></i> Referenzen</div>
-        <h2 class="h2">Diese Betriebe arbeiten bereits mit einer Software von uns</h2>
-        <p class="sub">Vom Holzbau über den Installateur bis zur Tischlerei: Jeder dieser Betriebe hat heute seine eigene Software, gebaut genau für seine Abläufe.</p>
-        <div class="kunden-count"><i class="ph ph-check-circle"></i> 19 Handwerksbetriebe aus Österreich</div>
-      </div>
-      <div class="logo-grid">
-        <div class="logo-card fade d1"><img src="/logos/willroider.png" alt="Holzbau Willroider" loading="lazy"><span>Holzbau Willroider</span></div>
-        <div class="logo-card fade d1"><img src="/logos/gasser.png" alt="Holzbau Gasser" loading="lazy"><span>Holzbau Gasser</span></div>
-        <div class="logo-card fade d2"><img src="/logos/groismaier.png" alt="Holzbau Groismaier" loading="lazy"><span>Holzbau Groismaier</span></div>
-        <div class="logo-card fade d2"><img src="/logos/lutz.png" alt="Holzbau Lutz" loading="lazy"><span>Holzbau Lutz</span></div>
-        <div class="logo-card fade d3"><img src="/logos/holzerleben.png" alt="holzerleben Holzwohnbau" loading="lazy"><span>holzerleben Holzwohnbau</span></div>
-        <div class="logo-card fade d3"><img src="/logos/steron.png" alt="Steron Poolbau" loading="lazy"><span>Steron Poolbau</span></div>
-        <div class="logo-card fade d4"><img src="/logos/schafferhofer.png" alt="Schafferhofer Bau" loading="lazy"><span>Schafferhofer Bau</span></div>
-        <div class="logo-card fade d4"><img src="/logos/bks.png" alt="BKS BauKomplettService" loading="lazy"><span>BKS BauKomplettService</span></div>
-        <div class="logo-card fade d5"><img src="/logos/schrettl.png" alt="Mark Schrettl Dachdeckerei" loading="lazy"><span>Schrettl · Dach aus einer Hand</span></div>
-        <div class="logo-card fade d5"><img src="/logos/cspowermetall.png" alt="CS Powermetall" loading="lazy"><span>CS Powermetall</span></div>
-        <div class="logo-card fade d6"><img src="/logos/trippl.png" alt="Mechanische Instandhaltung Trippl" loading="lazy"><span>Instandhaltung Trippl</span></div>
-        <div class="logo-card fade d6"><img src="/logos/fasching.png" alt="Fasching Gebäudetechnik" loading="lazy"><span>Fasching Gebäudetechnik</span></div>
-        <div class="logo-card fade d7"><img src="/logos/ruff.png" alt="Ruff Installateur" loading="lazy"><span>Ruff Installateur</span></div>
-        <div class="logo-card fade d7"><img src="/logos/doerflinger.png" alt="Dörflinger Wasser- und Heizungstechnik" loading="lazy"><span>Dörflinger Heizungstechnik</span></div>
-        <div class="logo-card fade d8"><img src="/logos/brodnig.png" alt="Elektro Brodnig" loading="lazy"><span>Elektro Brodnig</span></div>
-        <div class="logo-card fade d8"><img src="/logos/tilger.png" alt="Fliesen Tilger" loading="lazy"><span>Fliesen Tilger</span></div>
-        <div class="logo-card fade d9"><img src="/logos/birgmann.png" alt="Tischlerei Birgmann" loading="lazy"><span>Tischlerei Birgmann</span></div>
-        <div class="logo-card fade d9"><img src="/logos/eder.png" alt="Möbel Eder" loading="lazy"><span>Möbel Eder</span></div>
-        <div class="logo-card fade d9"><img src="/logos/hofer.png" alt="HT Montageteam Hofer Thomas" loading="lazy"><span>HT Montageteam Hofer</span></div>
+      <div class="kunden-label fade">Ein kleiner Auszug unserer Kunden, die bereits mit ihrer eigenen Software arbeiten</div>
+    </div>
+    <div class="marquee fade d1">
+      <div class="marquee-track">
+        <img src="/logos/willroider.png" alt="Holzbau Willroider" loading="lazy">
+        <img src="/logos/gasser.png" alt="Holzbau Gasser" loading="lazy">
+        <img src="/logos/groismaier.png" alt="Holzbau Groismaier" loading="lazy">
+        <img src="/logos/lutz.png" alt="Holzbau Lutz" loading="lazy">
+        <img src="/logos/holzerleben.png" alt="holzerleben Holzwohnbau" loading="lazy">
+        <img src="/logos/steron.png" alt="Steron Poolbau" loading="lazy">
+        <img src="/logos/schafferhofer.png" alt="Schafferhofer Bau" loading="lazy">
+        <img src="/logos/bks.png" alt="BKS BauKomplettService" loading="lazy">
+        <img src="/logos/schrettl.png" alt="Mark Schrettl" loading="lazy">
+        <img src="/logos/cspowermetall.png" alt="CS Powermetall" loading="lazy">
+        <img src="/logos/trippl.png" alt="Mechanische Instandhaltung Trippl" loading="lazy">
+        <img src="/logos/fasching.png" alt="Fasching Gebäudetechnik" loading="lazy">
+        <img src="/logos/ruff.png" alt="Ruff Installateur" loading="lazy">
+        <img src="/logos/doerflinger.png" alt="Dörflinger Wasser- und Heizungstechnik" loading="lazy">
+        <img src="/logos/brodnig.png" alt="Elektro Brodnig" loading="lazy">
+        <img src="/logos/tilger.png" alt="Fliesen Tilger" loading="lazy">
+        <img src="/logos/birgmann.png" alt="Tischlerei Birgmann" loading="lazy">
+        <img src="/logos/eder.png" alt="Möbel Eder" loading="lazy">
+        <img src="/logos/hofer.png" alt="HT Montageteam Hofer Thomas" loading="lazy">
+        <img src="/logos/willroider.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/gasser.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/groismaier.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/lutz.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/holzerleben.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/steron.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/schafferhofer.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/bks.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/schrettl.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/cspowermetall.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/trippl.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/fasching.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/ruff.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/doerflinger.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/brodnig.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/tilger.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/birgmann.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/eder.png" alt="" aria-hidden="true" loading="lazy">
+        <img src="/logos/hofer.png" alt="" aria-hidden="true" loading="lazy">
       </div>
     </div>
   </section>
