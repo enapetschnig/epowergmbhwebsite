@@ -7,6 +7,8 @@
     { "source": "/quiz", "destination": "/quiz.html" },
     { "source": "/impressum", "destination": "/impressum.html" },
     { "source": "/datenschutz", "destination": "/datenschutz.html" },
-    { "source": "/api/lead", "destination": "/api/lead" }
+    { "source": "/karriere", "destination": "/karriere.html" },
+    { "source": "/api/lead", "destination": "/api/lead" },
+    { "source": "/api/bewerbung", "destination": "/api/bewerbung" }
   ]
 }

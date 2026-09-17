@@ -64,6 +64,37 @@ app.post('/api/lead', async (req, res) => {
   res.json({ ok: true });
 });
 
+// Bewerbung endpoint (Karriere-Seite)
+app.post('/api/bewerbung', async (req, res) => {
+  const { stelle, vorname, nachname, email, telefon, nachricht, link } = req.body;
+  if (!stelle || !vorname || !nachname || !telefon) {
+    return res.status(400).json({ error: 'Fehlende Pflichtfelder' });
+  }
+  const timestamp = new Date().toLocaleString('de-AT', { timeZone: 'Europe/Vienna' });
+  const cut = (s, n) => (s || '').toString().trim().slice(0, n);
+  let message = `Neue Bewerbung: ${cut(stelle, 60)}\n`;
+  message += `${cut(vorname, 40)} ${cut(nachname, 40)}\n`;
+  message += `Tel: ${cut(telefon, 40)}\n`;
+  if (email) message += `Mail: ${cut(email, 80)}\n`;
+  if (link) message += `Link: ${cut(link, 120)}\n`;
+  if (nachricht) message += `Text: ${cut(nachricht, 300)}\n`;
+  message += `Zeit: ${timestamp}`;
+
+  console.log('--- NEUE BEWERBUNG ---');
+  console.log(message);
+  console.log('----------------------');
+
+  if (twilioClient && TWILIO_FROM && NOTIFY_PHONE) {
+    try {
+      await twilioClient.messages.create({ body: message, from: TWILIO_FROM, to: NOTIFY_PHONE });
+      console.log('SMS gesendet an', NOTIFY_PHONE);
+    } catch (err) {
+      console.error('SMS Fehler:', err.message);
+    }
+  }
+  res.json({ ok: true });
+});
+
 // Fallback: serve index.html for unknown routes
 app.get('*', (req, res) => {
   // Handle /youtube route
@@ -72,6 +103,9 @@ app.get('*', (req, res) => {
   }
   if (req.path === '/ki-assistent' || req.path === '/ki-telefon') {
     return res.sendFile(path.join(__dirname, 'ki-assistent.html'));
+  }
+  if (req.path === '/karriere') {
+    return res.sendFile(path.join(__dirname, 'karriere.html'));
   }
   if (req.path === '/termin') {
     return res.sendFile(path.join(__dirname, 'termin.html'));
