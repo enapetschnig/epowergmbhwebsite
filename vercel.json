@@ -8,6 +8,7 @@
     { "source": "/impressum", "destination": "/impressum.html" },
     { "source": "/datenschutz", "destination": "/datenschutz.html" },
     { "source": "/karriere", "destination": "/karriere.html" },
+    { "source": "/job-software-ki", "destination": "/job-software-ki.html" },
     { "source": "/api/lead", "destination": "/api/lead" },
     { "source": "/api/bewerbung", "destination": "/api/bewerbung" }
   ]

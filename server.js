@@ -104,6 +104,9 @@ app.get('*', (req, res) => {
   if (req.path === '/ki-assistent' || req.path === '/ki-telefon') {
     return res.sendFile(path.join(__dirname, 'ki-assistent.html'));
   }
+  if (req.path === '/job-software-ki') {
+    return res.sendFile(path.join(__dirname, 'job-software-ki.html'));
+  }
   if (req.path === '/karriere') {
     return res.sendFile(path.join(__dirname, 'karriere.html'));
   }
