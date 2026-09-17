@@ -77,7 +77,7 @@ app.post('/api/bewerbung', async (req, res) => {
   message += `Tel: ${cut(telefon, 40)}\n`;
   if (email) message += `Mail: ${cut(email, 80)}\n`;
   if (link) message += `Link: ${cut(link, 120)}\n`;
-  if (nachricht) message += `Text: ${cut(nachricht, 300)}\n`;
+  if (nachricht) message += `Text: ${cut(nachricht, 600)}\n`;
   message += `Zeit: ${timestamp}`;
 
   console.log('--- NEUE BEWERBUNG ---');
