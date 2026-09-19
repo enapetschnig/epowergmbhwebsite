@@ -22,7 +22,8 @@ async function forwardToCrm(lead) {
     platform: 'website',
     campaign_name: lead.quelle || 'website',
     ad_name: lead.seite || '',
-    is_entrepreneur: lead.chef === 'ja' || lead.handwerk === 'ja' ? true : null,
+    // Website-Formulare fragen explizit nach Chef/GF: wer das bejaht, ist Unternehmer.
+    is_entrepreneur: isJa(lead.gf) || isJa(lead.chef) || isJa(lead.handwerk) ? true : (isNein(lead.gf) || isNein(lead.chef) ? false : null),
     has_more_than_5_employees: parseMitarbeiter(lead.mitarbeiter),
     additional_info: buildInfo(lead),
     created_at: new Date().toISOString()
@@ -52,12 +53,21 @@ async function forwardToCrm(lead) {
   }
 }
 
+function isJa(v) { return typeof v === 'string' && /^(ja|yes|true)$/i.test(v.trim()); }
+function isNein(v) { return typeof v === 'string' && /^(nein|no|false)$/i.test(v.trim()); }
+
+// "1-5" -> 5, "6-10" -> 10, "10-20" -> 20, "50+" -> 50, "mehr als 20" -> 20
 function parseMitarbeiter(v) {
-  if (!v) return null;
+  if (v === undefined || v === null || v === '') return null;
   const s = String(v).toLowerCase();
-  const n = parseInt(s.replace(/[^\d]/g, ''), 10);
-  if (!isNaN(n)) return n > 5;
-  if (s.includes('mehr') || s.includes('über') || s.includes('+')) return true;
+  const nums = (s.match(/\d+/g) || []).map(Number);
+  if (nums.length) {
+    const max = Math.max(...nums);
+    if (/\+|mehr|über|ueber|>/.test(s)) return true;
+    return max > 5;
+  }
+  if (/mehr|über|ueber|viele/.test(s)) return true;
+  if (/keine|allein|solo/.test(s)) return false;
   return null;
 }
 
