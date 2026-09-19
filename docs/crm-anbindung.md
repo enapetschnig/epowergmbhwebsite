@@ -2,11 +2,11 @@
 
 Die Website (epowergmbh.at) schickt jeden Lead aus den Formularen (Quiz, Termin, KI-Telefon)
 zusätzlich zur SMS an die Supabase Edge Function `import-lead` des CRM
-(Projekt `wlalcftxyqozrmzcywus`, Ordner `~/Developer/epower-cockpit/crm-app`).
+(Projekt `xyhgckqxowqnzjtoblfs`, Ordner `~/Developer/epower-cockpit/crm-app`).
 
 ## Was die Website sendet
 
-`POST https://wlalcftxyqozrmzcywus.supabase.co/functions/v1/import-lead`
+`POST https://xyhgckqxowqnzjtoblfs.supabase.co/functions/v1/import-lead`
 Header: `Content-Type: application/json`, `x-webhook-key: <CRM_WEBHOOK_KEY>`
 
 ```json
@@ -34,7 +34,7 @@ Header: `Content-Type: application/json`, `x-webhook-key: <CRM_WEBHOOK_KEY>`
 
 | Variable | Wert |
 |---|---|
-| `CRM_WEBHOOK_URL` | `https://wlalcftxyqozrmzcywus.supabase.co/functions/v1/import-lead` |
+| `CRM_WEBHOOK_URL` | `https://xyhgckqxowqnzjtoblfs.supabase.co/functions/v1/import-lead` |
 | `CRM_WEBHOOK_KEY` | derselbe Wert wie `WEBHOOK_API_KEY` in den Secrets der Edge Function |
 
 Ohne diese beiden Variablen schickt die Website nur die SMS, der CRM-Teil wird übersprungen.
