@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const { forwardToCrm } = require('./api/_crm');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
@@ -47,19 +48,18 @@ app.post('/api/lead', async (req, res) => {
   console.log(message);
   console.log('------------------');
 
-  // Send SMS via Twilio
-  if (twilioClient && TWILIO_FROM && NOTIFY_PHONE) {
-    try {
-      await twilioClient.messages.create({
-        body: message,
-        from: TWILIO_FROM,
-        to: NOTIFY_PHONE
-      });
-      console.log('SMS gesendet an', NOTIFY_PHONE);
-    } catch (err) {
-      console.error('SMS Fehler:', err.message);
+  // SMS via Twilio + Weiterleitung ins CRM, parallel
+  const sms = (async () => {
+    if (twilioClient && TWILIO_FROM && NOTIFY_PHONE) {
+      try {
+        await twilioClient.messages.create({ body: message, from: TWILIO_FROM, to: NOTIFY_PHONE });
+        console.log('SMS gesendet an', NOTIFY_PHONE);
+      } catch (err) {
+        console.error('SMS Fehler:', err.message);
+      }
     }
-  }
+  })();
+  await Promise.all([sms, forwardToCrm(req.body)]);
 
   res.json({ ok: true });
 });
